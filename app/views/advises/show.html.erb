@@ -1,0 +1,24 @@
+<%= @advise.body %>
+<style>
+    /* マップを表示する div 要素の高さを必ず明示的に指定します。 */
+    #map {
+        height: 400px;
+        width: 600px;
+    }
+</style>
+<div id="map"></div><!-- 地図を表示する div 要素（id="map"）-->
+<script>
+    var map;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {
+                lat: 35.661777,
+                lng: 139.704051
+            },
+            zoom: 8
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0tPeMuVLE0Rz9B4uHDOaMTA4CllQix68&callback=initMap" async
+    defer></script>

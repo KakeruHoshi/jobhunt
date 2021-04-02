@@ -1,0 +1,55 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require simple_calendar
+ *= require_tree .
+ *= require_self
+ *= require fullcalendar
+ */
+
+ * {
+    padding: 0;
+    margin: 0;
+  }
+  body {
+    font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ",
+      Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+  }
+  header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 4px solid green;
+  }
+  .header_left {
+    display: flex;
+    align-items: flex-end;
+  }
+  .header_left a {
+    width: 30%;
+  }
+  .header_left img {
+    width: 100%;
+  }
+  .header_left p {
+    margin-left: 0.5rem;
+    color:greenyellow;
+  }
+  .header_right a {
+    font-weight: bold;
+    padding: 1rem;
+    color: white;
+    background-color:cornflowerblue;
+    border-radius: 1rem;
+    text-decoration: none;
+  }

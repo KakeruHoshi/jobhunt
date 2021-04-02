@@ -1,0 +1,2 @@
+class Advise < ApplicationRecord
+end
