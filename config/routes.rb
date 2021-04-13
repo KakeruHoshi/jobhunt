@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   root to: 'hello#index'
   resources :blogs
   resources :hello
-  resources :top
+  resources :tasks
   resources :tweets do
     resources :likes, only: [:create, :destroy]
+    resources :comments, only: [:create]
   end
-  resources :events
   get "advises" => "advises#show"
 end

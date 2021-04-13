@@ -32,6 +32,9 @@
         <%= link_to "詳細へ", tweet_path(t.id) %>
         <%= link_to "編集", edit_tweet_path(t.id) %>
         <%= link_to "削除", tweet_path(t.id), method: :delete %>
+        <br>
+        <%= image_tag t.image_url, size: "250x200" if t.image? %>
+        <%=  video_tag t.video_url , size: "250x200", :controls => true if t.video?%>
     </div>
     <% end %>
 </div>

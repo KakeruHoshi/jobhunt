@@ -1,12 +1,12 @@
 <%= @advise.body %>
-<style>
-    /* マップを表示する div 要素の高さを必ず明示的に指定します。 */
+
+<%# <style>
     #map {
         height: 400px;
         width: 600px;
     }
-</style>
-<div id="map"></div><!-- 地図を表示する div 要素（id="map"）-->
+</style> %>
+<%# <div id="map"></div>
 <script>
     var map;
 
@@ -21,4 +21,4 @@
     }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0tPeMuVLE0Rz9B4uHDOaMTA4CllQix68&callback=initMap" async
-    defer></script>
+    defer></script> %>

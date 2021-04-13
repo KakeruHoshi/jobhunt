@@ -3,11 +3,11 @@ class TweetsController < ApplicationController
 
     def index
         if params[:search] == nil
-          @tweets= Tweet.all.page(params[:page]).per(5)
+          @tweets= Tweet.all.page(params[:page]).per(5).order(id: 'DESC')
         elsif params[:search] == ''
-          @tweets= Tweet.all.page(params[:page]).per(5)
+          @tweets= Tweet.all.page(params[:page]).per(5).order(id: 'DESC')
         else
-          @tweets = Tweet.where("body LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(5)
+          @tweets = Tweet.where("body LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(5).order(id: 'DESC')
         end
     end
 
@@ -27,6 +27,8 @@ class TweetsController < ApplicationController
 
     def show
         @tweet = Tweet.find(params[:id])
+        @comments = @tweet.comments
+        @comment = Comment.new
     end
 
     def edit
@@ -50,7 +52,7 @@ class TweetsController < ApplicationController
 
     private
     def tweet_params
-        params.require(:tweet).permit(:body)
+        params.require(:tweet).permit(:body, :image, :video)
     
     end
 end

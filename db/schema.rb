@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_29_141703) do
+ActiveRecord::Schema.define(version: 2021_04_11_044234) do
 
   create_table "advises", force: :cascade do |t|
     t.text "body"
@@ -27,12 +27,14 @@ ActiveRecord::Schema.define(version: 2021_03_29_141703) do
     t.integer "user_id"
   end
 
-  create_table "events", force: :cascade do |t|
-    t.string "title"
-    t.datetime "starts_at"
-    t.datetime "ends_at"
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id", null: false
+    t.integer "tweet_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["tweet_id"], name: "index_comments_on_tweet_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -44,11 +46,20 @@ ActiveRecord::Schema.define(version: 2021_03_29_141703) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "completed"
+  end
+
   create_table "tweets", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "image"
+    t.string "video"
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,6 +76,8 @@ ActiveRecord::Schema.define(version: 2021_03_29_141703) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "tweets"
+  add_foreign_key "comments", "users"
   add_foreign_key "likes", "tweets"
   add_foreign_key "likes", "users"
 end

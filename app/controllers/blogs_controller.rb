@@ -13,11 +13,10 @@ class BlogsController < ApplicationController
   end
 
   def create
-    Blog.create(blog_parameter)
-    # blog = Blog.new(blog_parameter)
+    logger.debug "######################################"
+    blog = Blog.create(blog_parameter)
     # blog.user_id = current_user.id
-    logger.debug('##################')
-    logger.debug(blog_parameter)
+    logger.debug "######################################"
     redirect_to blogs_path
   end
 

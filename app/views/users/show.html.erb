@@ -1,6 +1,14 @@
-<%= @user.username %>のマイページ
-<%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
-<h1></h1>
-<%= link_to 'カレンダー', blogs_path%>
-<%= link_to 'Job Share', tweets_path%>
+<%= render 'shared/header' %>
+<div class="flex right">
+    <h2><%= @user.username %>のマイページ</h2>
+    <%= button_to destroy_user_session_path, method: :delete do%>
+    <i class="fas fa-sign-out-alt"></i>
+    <% end %>
+</div>
+
+<%= link_to 'カレンダー', blogs_path %>
+<%= link_to 'Job Share', tweets_path %>
+<%= link_to 'タスク管理', tasks_path %>
+<%= link_to '偉人たちの言葉', advises_path %>
+
 <script src="https://embed.small.chat/T01SG047NPQC01S80DLR3R.js" async></script>
