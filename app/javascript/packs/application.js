@@ -8,15 +8,16 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-require('jquery')
 
 //= require moment
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require jquery
 
 document.addEventListener('DOMContentLoaded', () => {
   const gif = document.getElementById('top');
@@ -24,20 +25,3 @@ document.addEventListener('DOMContentLoaded', () => {
     opacity: [0,1]
   }, 1000);
 });
-
-$(document).ready(function () {
-    hsize = $(window).height();
-    $("#login").css("height", hsize + "px");
-  });
-  $(window).resize(function () {
-    hsize = $(window).height();
-    $("#login").css("height", hsize + "px");
-  });
-  
-
-// $(function(){
-//   setInterval(() => {
-//     $('#top').fadeIn();
-//   }, 500);
-//   console.log('eeeee');
-// })

@@ -1,6 +1,42 @@
 <div id="top">
     <%= image_tag("job_noloop.gif") %>
+    <%= link_to new_user_session_path, id: "login", class:"btn btn--green btn--radius btn--cubic" do %>
+    <i class="fas fa-angle-double-right fa-position-left"></i>ログイン<i
+        class="fas fa-angle-double-left fa-position-right"></i>
+    <% end %>
+    <br>
 
-    <%= link_to "ログイン", new_user_session_path, {id: "login"} %>
-    <%= link_to "新規登録", new_user_registration_path, {id: "signup"} %>
+    <%= link_to new_user_registration_path, id: "signup", class:"btn btn--green btn--radius btn--cubic" do %>
+    <i class="fas fa-angle-double-right fa-position-left"></i>新規登録<i
+        class="fas fa-angle-double-left fa-position-right"></i>
+    <% end %>
+
+
+    <script type="text/javascript">
+        console.log($(window).width());
+        console.log($(window).height());
+        $(document).ready(function () {
+            wsize = $(window).width();
+            loginSize = wsize * 3 / 8;
+            $("#login").css("top", loginSize + "px");
+            console.log(loginSize);
+        });
+        $(window).resize(function () {
+            wsize = $(window).width();
+            loginSize = wsize * 3 / 8;
+            $("#login").css("top", loginSize + "px");
+            console.log(loginSize);
+        });
+
+        $(document).ready(function () {
+            wsize = $(window).width();
+            signupSize = wsize - wsize * 9 / 15;
+            $("#signup").css("top", signupSize + "px");
+        });
+        $(window).resize(function () {
+            wsize = $(window).width();
+            signupSize = wsize - wsize * 9 / 15;
+            $("#signup").css("top", signupSize + "px");
+        });
+    </script>
 </div>

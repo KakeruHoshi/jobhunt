@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
 
   def index
-    @blogs = Blog.all
+    @blogs = Blog.where(user_id: current_user.id)
   end
 
   def new
@@ -13,10 +13,9 @@ class BlogsController < ApplicationController
   end
 
   def create
-    logger.debug "######################################"
-    blog = Blog.create(blog_parameter)
-    # blog.user_id = current_user.id
-    logger.debug "######################################"
+    blog = Blog.new(blog_parameter)
+    blog.user_id = current_user.id
+    blog.save
     redirect_to blogs_path
   end
 

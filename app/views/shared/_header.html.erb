@@ -8,5 +8,10 @@
         <i class="fas fa-angle-double-right fa-position-left"></i>HOME<i
             class="fas fa-angle-double-left fa-position-right"></i>
         <% end %>
+        <div class="logout flex right">
+            <%= button_to destroy_user_session_path, {method: :get, class: "today"} do%>
+            <i class="fas fa-sign-out-alt"></i>
+            <% end %>
+        </div>
     </div>
 </header>

@@ -1,14 +1,84 @@
 <%= render 'shared/header' %>
-<div class="flex right">
-    <h2><%= @user.username %>のマイページ</h2>
-    <%= button_to destroy_user_session_path, method: :delete do%>
-    <i class="fas fa-sign-out-alt"></i>
-    <% end %>
+
+<div class="myaccount flex">
+    <div class="myname center">
+        <h2><%= @user.username %>のマイページ</h2>
+        <div class="content">
+            <a class="js-modal-open" href=""><span>名言一覧</span></a>
+        </div>
+    </div>
+
+    <div class="modal js-modal">
+        <div class="modal__bg js-modal-close"></div>
+        <div class="modal__content">
+            <% @user.quotes.each do |t| %>
+            <p><%= t.body %></p>
+            <% end %>
+            <% if @user.quotes.length == 0 %>
+            <p><a href="/advises">名言</a>を集めてみよう！</p>
+            <% end %>
+            <a class="js-modal-close" href="">閉じる</a>
+        </div>
+        <!--modal__inner-->
+    </div>
+    <!--modal-->
+    <script>
+        $(function () {
+            $('.js-modal-open').on('click', function () {
+                $('.js-modal').fadeIn();
+                return false;
+            });
+            $('.js-modal-close').on('click', function () {
+                $('.js-modal').fadeOut();
+                return false;
+            });
+        });
+    </script>
+
 </div>
 
-<%= link_to 'カレンダー', blogs_path %>
-<%= link_to 'Job Share', tweets_path %>
-<%= link_to 'タスク管理', tasks_path %>
-<%= link_to '偉人たちの言葉', advises_path %>
+<div class="functions">
+    <div id="calendar">
+        <%= link_to blogs_path do %>
+        <%= image_tag("calendar.jpg") %>
+        <div class="calendar_contents">
+            <h2>カレンダー</h2>
+            <p>就活生にとって予定管理は重要！　でも覚えるのは大変、そんな時はこれ！</p>
+        </div>
+        <% end %>
+    </div>
+    <div class="flex">
+        <div id="sns">
+            <%= link_to tweets_path do %>
+            <%= image_tag("sns.jpg") %>
+            <div class="sns_contents">
+                <h2>Job share</h2>
+                <p>情報を制するものは就活を制する。</p>
+            </div>
+            <% end %>
+        </div>
+        <div id="todo">
+            <%= link_to tasks_path do %>
+            <%= image_tag("todo.jpg") %>
+            <div class="todo_contents">
+                <h2>ToDo</h2>
+                <p>やるべきことを管理しよう</p>
+            </div>
+            <% end %>
+        </div>
+        <div id="quotes">
+            <%= link_to advises_path do %>
+            <%= image_tag("quotes.jpg") %>
+            <div class="quotes_contents">
+                <h2>偉人の名言</h2>
+                <p>辛い時は見てみよう。。</p>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>
+</div>
+
+
 
 <script src="https://embed.small.chat/T01SG047NPQC01S80DLR3R.js" async></script>

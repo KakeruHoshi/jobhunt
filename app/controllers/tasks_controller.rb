@@ -2,16 +2,19 @@ class TasksController < ApplicationController
     def index
         @show = params[:show]
         if @show == "all" then
-            @tasks = Task.all
+            @tasks = Task.where(user_id: current_user.id)
         else
-            @tasks = Task.where(completed: 0)
+            @tasks = Task.where(completed: 0, user_id: current_user.id)
         end
     end
     def new
         @task = Task.new
     end
     def create
-        @task = Task.create(task_params)
+        @task = Task.new(task_params)
+        @task.user_id = current_user.id
+        @task.save
+        # @task = Task.create(task_params)
         redirect_to tasks_path
     end
     def edit

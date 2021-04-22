@@ -1,5 +1,23 @@
-<%= @advise.body %>
+<%= render 'shared/header' %>
+<% @quoteFlg = 0 %>
+<% @quote = @advise.body %>
+<div class="anim-box kiran zoomin is-animated">
+    <h1 class='randomQuote'><%= @quote %></h1>
+</div>
+<% for i in @user_advise do %>
+<% if i.body == @quote then %>
+<% @quoteFlg = 1 %>
+<% end %>
+<% end %>
+<% if @quoteFlg == 0 || @user_advise.length == 0 then %>
+<%= form_tag advises_collect_path do %>
+<%= hidden_field_tag(:body, @quote) %>
+<div class="center">
+    <%= submit_tag '名言を集める' %>
+</div>
 
+<% end %>
+<% end %>
 <%# <style>
     #map {
         height: 400px;
