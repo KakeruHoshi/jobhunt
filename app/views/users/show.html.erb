@@ -76,6 +76,23 @@
         </div>
         <% end %>
     </div>
+    <style>
+        .functions {
+            opacity: 0;
+            transition: .7s;
+            margin-top: 60px;
+        }
+
+        .functions.showUp {
+            opacity: 1;
+            margin-top: 0;
+        }
+    </style>
+    <script>
+        $(function () {
+            $('.functions').addClass('showUp');
+        });
+    </script>
 </div>
 </div>
 
