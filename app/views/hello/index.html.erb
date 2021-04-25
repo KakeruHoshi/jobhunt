@@ -10,29 +10,27 @@
     <i class="fas fa-angle-double-right fa-position-left"></i>新規登録<i
         class="fas fa-angle-double-left fa-position-right"></i>
     <% end %>
-
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            wsize = $(window).width();
-            loginSize = wsize * 3 / 8;
-            $("#login").css("top", loginSize + "px");
-        });
-        $(window).resize(function () {
-            wsize = $(window).width();
-            loginSize = wsize * 3 / 8;
-            $("#login").css("top", loginSize + "px");
-        });
-
-        $(document).ready(function () {
-            wsize = $(window).width();
-            signupSize = wsize - wsize * 9 / 15;
-            $("#signup").css("top", signupSize + "px");
-        });
-        $(window).resize(function () {
-            wsize = $(window).width();
-            signupSize = wsize - wsize * 9 / 15;
-            $("#signup").css("top", signupSize + "px");
-        });
-    </script>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        wsize = $(window).width();
+        loginSize = wsize * 3 / 8;
+        $("#login").css("top", loginSize + "px");
+    });
+    $(window).resize(function () {
+        wsize = $(window).width();
+        loginSize = wsize * 3 / 8;
+        $("#login").css("top", loginSize + "px");
+    });
+
+    $(document).ready(function () {
+        wsize = $(window).width();
+        signupSize = wsize - wsize * 9 / 15;
+        $("#signup").css("top", signupSize + "px");
+    });
+    $(window).resize(function () {
+        wsize = $(window).width();
+        signupSize = wsize - wsize * 9 / 15;
+        $("#signup").css("top", signupSize + "px");
+    });
+</script>
