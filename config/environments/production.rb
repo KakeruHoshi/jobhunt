@@ -96,7 +96,18 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
+  config.action_mailer.default_url_options = {:host =>'https://jobhuntkakeru.herokuapp.com/'}
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :domain => 'heroku.com',
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password =>ENV['SENDGRID_PASSWORD'],
+    :authentication =>:plain
+  }
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
   # middleware. The `delay` is used to determine how long to wait after a write
