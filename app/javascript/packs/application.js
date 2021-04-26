@@ -4,17 +4,20 @@
 // that code so it'll be compiled.
 
 import Rails, { $ } from "@rails/ujs"
-import Turbolinks from "turbolinks"
+// import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+require("@rails/ujs").start()
+// require("turbolinks").start() ←ここをコメントアウト
+require("@rails/activestorage").start()
+require("channels")
 
+// Rails.start()
+// Turbolinks.start()
+// ActiveStorage.start()
 
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
-
-//= require moment
-//= require jquery3
-//= require popper
-//= require bootstrap
-//= require jquery
+// require moment
+// require jquery3
+// require popper
+// require bootstrap
+// require jquery

@@ -65,6 +65,7 @@
     text-decoration: none;
   }
   .today{
+    width: 100%;
     display: block;
     text-decoration: none;
     text-align: center;
@@ -75,7 +76,6 @@
     -weabkit-transition: all 0.5s;
     transition: all 0.5s;
     padding: 10px;
-    margin: 0 10px;
   }
   
   .today:hover{
