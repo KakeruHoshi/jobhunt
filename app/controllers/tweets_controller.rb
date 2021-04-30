@@ -2,6 +2,7 @@ class TweetsController < ApplicationController
     before_action :authenticate_user!
 
     def index
+        @tweet = Tweet.new
         if params[:search] == nil
           @tweets= Tweet.all.page(params[:page]).per(5).order(id: 'DESC')
         elsif params[:search] == ''

@@ -1,8 +1,40 @@
 <%= render 'shared/header' %>
 <p id="notice"><%= notice %></p>
+<div class="modal js-modal">
+    <div class="modal__bg js-modal-close"></div>
+    <div id="todo_modal">
+        <div class="modal__content">
+            <p>
+                <%= form_with(model: @blog, local: true) do |form| %>
 
-<h1><%= current_user.username %>の日記</h1>
+                <div class="title">
+                    <%= form.label :タイトル %>
+                    <%= form.text_field :title %>
+                </div>
 
+                <div class="time">
+                    <%= form.label :開始時刻 %>
+                    <%= form.datetime_select :start_time %>
+                </div>
+
+                <div class="content">
+                    <%= form.label :内容 %>
+                    <%= form.text_field :content %>
+                </div>
+
+
+                <div class="submit">
+                    <%= form.submit :保存する %>
+                </div>
+
+                <% end %>
+            </p>
+            <a class="js-modal-close" href="">閉じる</a>
+        </div>
+    </div>
+    <!--modal__inner-->
+</div>
+<!--modal-->
 <table>
     <thead>
         <tr>
@@ -17,17 +49,18 @@
         <tr>
             <td><%= blog.title %></td>
             <td><%= blog.start_time.strftime("%Y-%m-%d %H:%M") %></td>
-            <td><%= link_to 'Show', blog %></td>
-            <td><%= link_to 'Edit', edit_blog_path(blog.id) %></td>
-            <td><%= link_to 'Destroy',blog_path(blog.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to '詳細', blog %></td>
+            <td><%= link_to '編集', edit_blog_path(blog.id) %></td>
+            <td><%= link_to '消去',blog_path(blog.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
         <% end %>
     </tbody>
 </table>
 
 <br>
-
-<%= link_to '日記をかく', new_blog_path %>
+<div class="js-modal-open">
+    <%= link_to '日記をかく' %>
+</div>
 
 <%= month_calendar events: @blogs do |date, blogs| %>
 <%= date.day %>
@@ -38,3 +71,15 @@
 </div>
 <% end %>
 <% end %>
+<script>
+    $(function () {
+        $('.js-modal-open').on('click', function () {
+            $('.js-modal').fadeIn();
+            return false;
+        });
+        $('.js-modal-close').on('click', function () {
+            $('.js-modal').fadeOut();
+            return false;
+        });
+    });
+</script>

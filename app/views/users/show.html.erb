@@ -41,7 +41,7 @@
     <div id="calendar">
         <%= link_to blogs_path do %>
         <%= image_tag("calendar.jpg") %>
-        <div class="calendar_contents">
+        <div id="calendar_contents">
             <h2>カレンダー</h2>
             <p>就活生にとって予定管理は重要！　でも覚えるのは大変、そんな時はこれ！</p>
         </div>
@@ -76,21 +76,11 @@
         </div>
         <% end %>
     </div>
-    <style>
-        .functions {
-            opacity: 0;
-            transition: .7s;
-            margin-top: 60px;
-        }
-
-        .functions.showUp {
-            opacity: 1;
-            margin-top: 0;
-        }
-    </style>
     <script>
         $(function () {
-            $('.functions').addClass('showUp');
+            $('#calendar_contents').addClass('showIn');
+            $('#calendar').addClass('showIn');
+            $('#sns, #todo, #quotes').addClass('showUp');
         });
     </script>
 </div>

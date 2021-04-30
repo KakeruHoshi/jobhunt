@@ -1,33 +1,70 @@
 <%= render 'shared/header' %>
-<h1>タスク一覧</h1>
-<%= link_to '追加', new_task_path %>
-<% if @show %>
-<%= link_to 'すべて', tasks_path(:show=>'all'), class: 'btn btn-primary btn-sm ml-2' %>
-<%= link_to '未完了', tasks_path, class: 'btn btn-outline-primary btn-sm ml-1' %>
-<% else %>
-<%= link_to 'すべて', tasks_path(:show=>'all'), class: 'btn btn-outline-primary btn-sm ml-2' %>
-<%= link_to '未完了', tasks_path, class: 'btn btn-primary btn-sm ml-1' %>
-<% end %>
-<table>
-    <thead>
-        <tr>
-            <th>タスク名</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @tasks.each do |task| %>
-        <tr>
-            <td><%= task.title %></td>
-            <% if task.completed == 0%>
-            <td><%= form_for(task) do |f| %>
-                <%=f.hidden_field :completed,:value => 1, id: 'task_completed' %>
-                <div><%= f.submit "完了"%></div>
-                <% end %></td>
-            <% end %>
-            <td><%= link_to '編集', edit_task_path(task) %></td>
-            <td><%= link_to '削除', task_path(task), method: :delete %></td>
-        </tr>
+<div class="container_tweet">
+    <h1>Todo</h1>
+    <div class="modal js-modal">
+        <div class="modal__bg js-modal-close"></div>
+        <div id="todo_modal">
+            <div class="modal__content">
+                <p>
+                    <%= form_for(@task) do |f| %>
+                    <h2>
+                        <div style='color: blue;'><%= f.label :title %></div>
+                    </h2>
+                    <div><%= f.text_field :title %></div>
+                    <%=f.hidden_field :completed,:value => 0, id: 'task_completed' %>
+                    <div><%= f.submit %></div>
+                    <% end %>
+                </p>
+                <a class="js-modal-close" href="">閉じる</a>
+            </div>
+        </div>
+        <!--modal__inner-->
+    </div>
+    <!--modal-->
+
+    <% if @show %>
+    <%= link_to 'すべて', tasks_path(:show=>'all'), class: 'btn btn-primary btn-sm ml-2' %>
+    <%= link_to '未完了', tasks_path, class: 'btn btn-outline-primary btn-sm ml-1' %>
+    <% else %>
+    <%= link_to 'すべて', tasks_path(:show=>'all'), class: 'btn btn-outline-primary btn-sm ml-2' %>
+    <%= link_to '未完了', tasks_path, class: 'btn btn-primary btn-sm ml-1' %>
+    <% end %>
+    <div class="right js-modal-open">
+        <%= link_to do %>
+        <i class="fas fa-plus-circle"></i>
         <% end %>
-    </tbody>
-</table>
-<%= link_to '追加', new_task_path %>
+    </div>
+    <div class="todo_list">
+        <table>
+            <tbody>
+                <% @tasks.each do |task| %>
+                <tr>
+
+                    <td><span><%= task.title %></span></td>
+                    <td><%= link_to '編集', edit_task_path(task) %></td>
+                    <td><%= link_to '削除', task_path(task), method: :delete %></td>
+                    <% if task.completed == 0%>
+                    <td><%= form_for(task) do |f| %>
+                        <%=f.hidden_field :completed,:value => 1, id: 'task_completed' %>
+                        <div><%= f.submit "完了"%></div>
+                        <% end %></td>
+                    <% end %>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+    <%= link_to '追加', new_task_path %>
+</div>
+<script>
+    $(function () {
+        $('.js-modal-open').on('click', function () {
+            $('.js-modal').fadeIn();
+            return false;
+        });
+        $('.js-modal-close').on('click', function () {
+            $('.js-modal').fadeOut();
+            return false;
+        });
+    });
+</script>

@@ -1,21 +1,25 @@
+<%= stylesheet_link_tag 'tweets', :media => "all" %>
 <h1>JobShare</h1>
-<h3>新規share</h3>
-<%= form_for @tweet do |f| %>
-<div class="field">
-    <%= f.label :投稿 %>
-    <%= f.text_field :body, :size => 140 %>
-</div>
+<div class="post-container">
+    <h3>新規share</h3>
+    <%= form_for(@tweet, :url => { controller:'tweets', action:'create'})do |f| %>
+    <div class="field">
+        <%= f.label :投稿 %>
+        <%= f.text_field :body, :size => 140 %>
+    </div>
 
-<div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-</div>
+    <div class="field">
+        <%= f.label :image %>
+        <%= f.file_field :image %>
+    </div>
 
-<div class="field">
-    <%= f.label :video %>
-    <%= f.file_field :video %>
-</div>
+    <div class="field">
+        <%= f.label :video %>
+        <%= f.file_field :video %>
+    </div>
 
-<%= f.submit "Tweetする" %>
-<% end %>
-<%= link_to "Tweet一覧に戻る", tweets_path %>
+    <%= f.submit "Tweetする" %>
+    <% end %>
+    <%= link_to "Tweet一覧に戻る", tweets_path %>
+    <p class="title">投稿フォーム</p>
+</div>

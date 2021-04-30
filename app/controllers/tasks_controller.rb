@@ -6,6 +6,7 @@ class TasksController < ApplicationController
         else
             @tasks = Task.where(completed: 0, user_id: current_user.id)
         end
+        @task = Task.new
     end
     def new
         @task = Task.new

@@ -64,24 +64,6 @@
     border-radius: 1rem;
     text-decoration: none;
   }
-  .today{
-    width: 100%;
-    display: block;
-    text-decoration: none;
-    text-align: center;
-    background-color: #fff;
-    color: #32cf74;
-    border: #32cf74 solid 2px;
-    border-radius: 5px;
-    -weabkit-transition: all 0.5s;
-    transition: all 0.5s;
-    padding: 10px;
-  }
-  
-  .today:hover{
-    background-color: #32cf74;
-    color: #fff;
-  }
 
   // ログインページ
   #top img {
@@ -148,6 +130,53 @@
   h2 {
     margin-bottom: 0;
   }
+  #calendar {
+    opacity: 0;
+    transition: 2s;
+    margin-left: 1000px;
+  }
+  #calendar.showIn {
+    opacity: 1;
+    margin-left: 0;
+  }
+  #calendar_contents {
+    opacity: 0;
+    transition: 2s;
+    margin-left: 1000px;
+  }
+  #calendar_contents.showIn {
+    opacity: 1;
+    margin-left: 0;
+  }
+  #sns {
+    opacity: 0;
+    transition: 2s;
+    margin-top: 200px;
+  }
+  #sns.showUp {
+    opacity: 1;
+    margin-top: 0;
+  }
+  #todo {
+    opacity: 0;
+    transition: 2s;
+    margin-top: 200px;
+  }
+  #todo.showUp {
+    transition-delay: 0.5s;
+      opacity: 1;
+      margin-top: 0;
+  }
+  #quotes {
+    opacity: 0;
+    transition: 2s;
+    margin-top: 200px;
+  }
+  #quotes.showUp {
+    transition-delay: 1s;
+      opacity: 1;
+      margin-top: 0;
+  }
   .functions img {
     transition: all 0.5s;
   }
@@ -201,7 +230,7 @@
   #quotes:hover {
     opacity: 0.7;
   }
-  .calendar_contents {
+  #calendar_contents {
     color: white;
     background-color: #3be67c;
     border-radius: 6px;
@@ -326,6 +355,15 @@ a.btn--green:hover {
   width: 60%;
 }
 
+// ツイート
+.container_tweet {
+  width: 60%;
+  margin: 0 auto;
+}
+.container_tweet tr {
+  border-bottom: 2px;
+}
+
 // 名言
 .randomQuote {
   width: 80%;
@@ -390,4 +428,170 @@ a.btn--green:hover {
     opacity: 1;
     transform: scale(1);
   }
+}
+.todo_list table {
+  margin: 1rem;
+  font-size: 1rem;
+}
+
+.todo_list table span {
+  font-size: 1.5rem;
+}
+
+.todo_list tr {
+  padding: 3rem;
+}
+
+.todo_list tr:nth-child(odd) {
+  background-color:  #ddd;    /* 背景色指定 */
+}
+
+.todo_list th,td {
+  padding: 5px 10px;          /* 余白指定 */
+}
+
+.right a>i {
+  margin-right: 3rem;
+  font-size: 2rem;
+}
+
+#todo_modal .modal__content {
+  background: #fff;
+  border-radius: 2rem;
+  left: 50%;
+  padding: 40px;
+  position: absolute;
+  top: 30%;
+  transform: translate(-50%,-50%);
+  width: 60%;
+}
+
+.time {
+  display:inline;
+}
+
+// ログイン画面
+* {
+  text-decoration: none;
+}
+.box {
+  width: 350px;
+  height: 450px;
+  margin: 60px auto 0;
+  border-radius: 4px;
+  border: 1px #ddd solid;
+}
+
+.box-inner {
+  padding: 20px 26px;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  padding-bottom: 4px;
+  color: #111111;
+}
+
+.box-email {
+  margin-bottom: 13px;
+}
+
+.box-password {
+  margin-bottom: 22px;
+}
+
+.box-email label, .box-password label {
+  font-weight: 700;
+  font-size: 13px;
+  padding-left: 2px;
+  padding-bottom: 2px;
+}
+
+.box-email input[type="email"], .box-password input[type="password"] {
+  border-style: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 31px;
+  border: 1px solid #a6a6a6;
+  box-shadow: 0 1px 0 rgba(0,0,0,.07) inset;
+  border-radius: 3px;
+  padding: 0 7px;
+}
+
+.column-left {
+  float: left;
+}
+
+.column-right {
+  float: right;
+}
+
+.box-password a {
+  font-size: 13px;
+}
+
+.box-login {
+  margin-bottom: 26px;
+}
+
+.box-login input[type="submit"] {
+  border-style: none;
+  width: 100%;
+  height: 31px;
+  background: linear-gradient(to bottom,#32cf74,#3be67c);
+  border-radius: 3px;
+  border: 1px #a88734 solid;
+}
+
+.box-login input[type="submit"]:hover {
+  cursor: pointer;
+  background: #15fa88;
+}
+
+.legal-text {
+  margin-top: 18px;
+  font-size: 12px;
+}
+
+.remember {
+  font-size: 13px;
+  margin-top: 18px;
+  padding-left: 3px;
+}
+
+.box-newusr p {
+  text-align: center;
+  font-size: 12px;
+  color: #767676;
+  margin-bottom: 14px;
+}
+
+.box-newusr p span {
+  text-decoration: line-through;
+  text-decoration-color: #e7e7e7;
+}
+
+.box-newusr a {
+  display: block;
+  width: 100%;
+  height: 31px;
+  font-size: 13px;
+  color: #111;
+  line-height: 31px;
+  text-align: center;
+  background: linear-gradient(to bottom,#f7f8fa,#e7e9ec);
+  border-radius: 3px;
+  border: 1px #a2a6ac solid;
+}
+
+.box-newusr a:hover {
+  background: #e7e9ec;
+}
+
+#registration {
+  width: 50%;
+  margin: 2rem auto;
 }

@@ -22,3 +22,43 @@
     display: flex;
     justify-content: flex-end;
   }
+  .post-container {
+    margin: 0px auto;
+    width: 100%;
+    border: solid #d3def1;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #d3def1;
+  }
+
+  .post-container input[type="text"] {
+    width: 95%;
+    height: 40px;
+  }
+
+  .content{
+    margin: 0 auto;
+    padding: 5px;
+  }
+  .modal{
+    display: none;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  .modal__bg{
+    background: rgba(0,0,0,0.8);
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+  }
+  .modal__content{
+    background: #fff;
+    border-radius: 2rem;
+    left: 50%;
+    padding: 0px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
